@@ -11,15 +11,15 @@ class filepicker {
             color1: Scratch.Cast.toString(`#0d9bb8`),
             blocks: [
                 {
-                    opcode: Scratch.Cast.toString(`select file`),
+                    opcode: Scratch.Cast.toString(`select_file`),
                     blockType: Scratch.BlockType.COMMAND,
-                    text: Scratch.Cast.toString(`select_file`),
+                    text: Scratch.Cast.toString(`select file`),
                 },
 
                 {
-                    opcode: Scratch.Cast.toString(`selected file`),
+                    opcode: Scratch.Cast.toString(`selected_file`),
                     blockType: Scratch.BlockType.REPORTER,
-                    text: Scratch.Cast.toString(`selected_file`),
+                    text: Scratch.Cast.toString(`selected file`),
                 },
             ],
         }
