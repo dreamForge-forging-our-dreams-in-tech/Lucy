@@ -10,4 +10,8 @@ For example, you have a class name called "pickfiles" then a logical opcode name
 
 ## Scratch requirements
 
-When naming the opcode and adding text to blocks make sure that the name matches the text used in the opcode. for example you have a opcode named "pick_files" then that must also be used in the blocks text to ensure recognizability accross platforms
+Extension blocks still have to match in with Scratch itself and because of that it is allowed to make block texts be different than the opcode names but this has to be documentated properly and block text still need to resemble soemthing of the opcode name for recognizability.
+
+E.g. you have your opcode named "pick_files" then it is allowed to have the text of your block be "Pick files", block texts should still follow Scratch guidelines but should be recognizable as a javascript function as well.
+
+We generally prefer making our block texts be the smae as the opcode but without the extra fancy characters -> "pick_files_with_mime_type" becomes "pick files with mime type".
