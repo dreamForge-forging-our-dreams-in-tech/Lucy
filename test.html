@@ -20,7 +20,8 @@
 
         window.onclick = function () {
             Lucy.filepicker.select_file();
-            document.body.style.backgroundImage = `url('${Lucy.filepicker.selected_file}')`;
+            console.log(Lucy.filepicker.selected_file())
+            document.body.style.backgroundImage = `url('${Lucy.filepicker.selected_file()}')`;
         }
     </script>
 </body>

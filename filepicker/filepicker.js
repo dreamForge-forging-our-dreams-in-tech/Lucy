@@ -27,7 +27,7 @@ class filepicker {
 
     // prompt the user to select a file
     async select_file(args, util) {
-        return new Promise((resolve, reject) => {
+        await new Promise((resolve, reject) => {
             // 1. Create a hidden file input element dynamically
             const input = document.createElement('input');
             input.type = 'file';
