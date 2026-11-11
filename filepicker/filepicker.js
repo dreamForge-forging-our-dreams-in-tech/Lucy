@@ -67,7 +67,7 @@ class filepicker {
     }
 
     // returns the selected file
-    get_file_info(args, util) {
+    get_file(args, util) {
         //return this.picked_file;
 
         let type = args.TYPE || args;
@@ -78,6 +78,8 @@ class filepicker {
             return this.picked_file.name;
         } else if(type == 'lastModifiedDate') {
             return this.picked_file.lastModifiedDate;
+        } else {
+            return this.picked_file;
         }
     }
 }
