@@ -20,8 +20,7 @@
 
         window.onclick = async function () {
             await Lucy.filepicker.select_file();
-            console.log(Lucy.filepicker.selected_file())
-            document.body.style.backgroundImage = `url('${Lucy.filepicker.selected_file()}')`;
+            document.body.style.backgroundImage = `url('${Lucy.filepicker.get_file_info('blob')}')`;
         }
     </script>
 </body>

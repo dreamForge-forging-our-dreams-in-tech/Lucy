@@ -12,16 +12,32 @@ class filepicker {
             blocks: [
                 {
                     opcode: Scratch.Cast.toString(`select_file`),
-                    blockType: Scratch.BlockType.COMMAND,
+                    blockType: Scratch.BlockType.REPORTER,
                     text: Scratch.Cast.toString(`select file`),
                 },
 
                 {
-                    opcode: Scratch.Cast.toString(`selected_file`),
+                    opcode: Scratch.Cast.toString(`get_file_info`),
                     blockType: Scratch.BlockType.REPORTER,
-                    text: Scratch.Cast.toString(`selected file`),
+                    text: Scratch.Cast.toString(`get file [TYPE]`),
+                    arguments: {
+                        TYPE: { type: Scratch.ArgumentType.STRING, menu: Scratch.Cast.toString(`file_info`) },
+                    },
                 },
             ],
+            menus:
+            {
+                file_info
+                    : {
+                    acceptReporters:
+                        false
+                    , items: [
+                        { text: Scratch.Cast.toString(`BLOB url`), value: Scratch.Cast.toString(`blob`) },
+                        { text: Scratch.Cast.toString(`Name`), value: Scratch.Cast.toString(`name`) },
+                        { text: Scratch.Cast.toString(`Last Modified`), value: Scratch.Cast.toString(`lastModifiedDate`) },]
+                }
+
+            },
         }
     }
 
@@ -35,7 +51,7 @@ class filepicker {
 
             // 2. Listen for the change event once on this temporary input
             input.onchange = (event) => {
-                const file = URL.createObjectURL(event.target.files[0]);
+                const file = event.target.files[0];
                 if (file) {
                     this.picked_file = file;
                     resolve(file); // Successfully got the file
@@ -51,8 +67,18 @@ class filepicker {
     }
 
     // returns the selected file
-    selected_file (args, util) {
-        return this.picked_file;
+    get_file_info(args, util) {
+        //return this.picked_file;
+
+        let type = args.TYPE || args;
+
+        if(type == 'blob') {
+            return URL.createObjectURL(this.picked_file);
+        } else if(type == 'name') {
+            return this.picked_file.name;
+        } else if(type == 'lastModifiedDate') {
+            return this.picked_file.lastModifiedDate;
+        }
     }
 }
 Scratch.extensions.register(new filepicker(Scratch.vm.runtime));
