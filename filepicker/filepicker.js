@@ -27,7 +27,7 @@ class filepicker {
 
     // prompt the user to select a file
     async select_file(args, util) {
-        await new Promise((resolve, reject) => {
+        return new Promise((resolve, reject) => {
             // 1. Create a hidden file input element dynamically
             const input = document.createElement('input');
             input.type = 'file';
@@ -35,7 +35,7 @@ class filepicker {
 
             // 2. Listen for the change event once on this temporary input
             input.onchange = (event) => {
-                const file = event.target.files[0];
+                const file = URL.createObjectURL(event.target.files[0]);
                 if (file) {
                     this.picked_file = file;
                     resolve(file); // Successfully got the file

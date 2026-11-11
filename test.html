@@ -18,8 +18,8 @@
             throw error;
         }
 
-        window.onclick = function () {
-            Lucy.filepicker.select_file();
+        window.onclick = async function () {
+            await Lucy.filepicker.select_file();
             console.log(Lucy.filepicker.selected_file())
             document.body.style.backgroundImage = `url('${Lucy.filepicker.selected_file()}')`;
         }
