@@ -25,7 +25,7 @@ You can access this function by using: "Lucy.filepicker.get_file();" or dragging
 
 Getting a file object:
 
-To get a file object simply call "Lucy.filepicker.get_file();" without passing any arguments, this is a js only future as scratch does not use JSON or objects.
+To get a file object simply call "Lucy.filepicker.get_file();" without passing any arguments, this is a jJavaScript only future as scratch does not use JSON or objects.
 
 Getting the file blob URL:
 

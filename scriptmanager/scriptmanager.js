@@ -3,7 +3,7 @@
 // there are two types COMMAND and REPORTER
 // COMMAND executes a piece of code and returns nothing, while REPORTER executes a piece of code and returns a value.
 
-class ASD_COMMAND {
+class ScriptManager {
     constructor(runtime) {
         this.runtime = runtime;
 
@@ -15,8 +15,8 @@ class ASD_COMMAND {
     }
     getInfo() {
         return {
-            id: 'dreamForgeJSTools', // Ensure this is lowercase/no symbols
-            name: 'ASD',
+            id: 'scriptmanager', // Ensure this is lowercase/no symbols
+            name: 'scriptmanager',
             color1: '#0088ff', // Main block color
             color2: '#0066cc', // Hover/Outline color
             menus:
@@ -35,11 +35,11 @@ class ASD_COMMAND {
                 {
                     opcode: 'evalCode',
                     blockType: Scratch.BlockType.COMMAND,
-                    text: 'Evaluate [RAW_CODE]',
+                    text: 'Evaluate expression [RAW_CODE]',
                     arguments: {
                         RAW_CODE: {
                             type: Scratch.ArgumentType.STRING,
-                            defaultValue: '2 * 2'
+                            defaultValue: 'alert()'
                         },
 
                     }
@@ -47,7 +47,7 @@ class ASD_COMMAND {
                 {
                     opcode: 'evalCode_Reporter',
                     blockType: Scratch.BlockType.REPORTER,
-                    text: "Evaluate [RAW_CODE] and return it's result",
+                    text: "Evaluate result [RAW_CODE]",
                     arguments: {
                         RAW_CODE: {
                             type: Scratch.ArgumentType.STRING,
@@ -75,4 +75,4 @@ class ASD_COMMAND {
     }
 }
 
-Scratch.extensions.register(new ASD_COMMAND(Scratch.vm.runtime));
+Scratch.extensions.register(new ScriptManager(Scratch.vm.runtime));
