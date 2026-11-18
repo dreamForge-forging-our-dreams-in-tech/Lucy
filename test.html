@@ -19,8 +19,7 @@
         }
 
         window.onclick = async function () {
-            await Lucy.filepicker.select_file();
-            document.body.style.backgroundImage = `url('${Lucy.filepicker.get_file('blob')}')`;
+            lucy.scriptmanager.evaluateExpression('alert(`test message`)');
         }
     </script>
 </body>

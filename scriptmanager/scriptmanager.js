@@ -8,7 +8,7 @@ class ScriptManager {
         this.runtime = runtime;
 
         try { // check if the registery is available and prevent crashes if not
-            window.registerExtension('https://dreamforge-forging-our-dreams-in-tech.github.io/Lucy/turbowarp_gryffindor_only/ASD%20blocks/');
+            window.registerExtension('https://dreamforge-forging-our-dreams-in-tech.github.io/Lucy/scriptmanager/scriptmanager.js');
         } catch (e) {
             console.warn('Extension registry not found, skipping extension registration. please install the extension builder first if you plan to use this extension with the extension builder.');
         }
@@ -33,7 +33,7 @@ class ScriptManager {
             },
             blocks: [
                 {
-                    opcode: 'evalCode',
+                    opcode: 'evaluateExpression',
                     blockType: Scratch.BlockType.COMMAND,
                     text: 'Evaluate expression [RAW_CODE]',
                     arguments: {
@@ -45,7 +45,7 @@ class ScriptManager {
                     }
                 },
                 {
-                    opcode: 'evalCode_Reporter',
+                    opcode: 'evaluateResult',
                     blockType: Scratch.BlockType.REPORTER,
                     text: "Evaluate result [RAW_CODE]",
                     arguments: {
@@ -61,13 +61,13 @@ class ScriptManager {
     }
 
     // The function name MUST match the opcode above exactly
-    evalCode_Reporter(args) {
+    evaluateResult(args) {
         return this.evalCode(args); // reuse evalCode to avoid code duplication, only reason for extra function is due to how turbowarp handles identification of blocks.
     }
 
-    evalCode(args) {
+    evaluateExpression(args) {
         try {
-            const fn = new Function('a', `return ${args.RAW_CODE}`);
+            const fn = new Function('a', `return ${args.RAW_CODE || args}`);
             return fn(); // keep return statement because reporter reuses the same function
         } catch (e) {
             return `Error: ${e.message}`;

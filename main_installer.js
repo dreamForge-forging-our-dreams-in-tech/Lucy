@@ -1,7 +1,8 @@
 const installedExtensions = new Map(); // store all isntaleld extensions here
 
 let urls = [
-    'https://dreamforge-forging-our-dreams-in-tech.github.io/Lucy/filepicker/filepicker.js'
+    'https://dreamforge-forging-our-dreams-in-tech.github.io/Lucy/filepicker/filepicker.js',
+    'https://dreamforge-forging-our-dreams-in-tech.github.io/Lucy/scriptmanager/scriptmanager.js'
 ];
 
 async function getClassNameFromUrl(url) {
