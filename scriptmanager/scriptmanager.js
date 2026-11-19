@@ -75,7 +75,7 @@ class ScriptManager {
     }
 
     evaluateStatement(args, util) {
-        const code = args.RAW_CODE;
+        const code = args.RAW_CODE || args;
 
         if (!code) {
             util.startBranch(1);
