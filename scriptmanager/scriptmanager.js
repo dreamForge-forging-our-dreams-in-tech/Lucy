@@ -61,7 +61,7 @@ class ScriptManager {
 
     evaluateExpression(args) {
         try {
-            const fn = new Function('a', `return ${args}`);
+            const fn = new Function('a', `return ${args.RAW_CODE || args}`);
             return fn(); // keep return statement because reporter reuses the same function
         } catch (e) {
             console.error(e.message);
