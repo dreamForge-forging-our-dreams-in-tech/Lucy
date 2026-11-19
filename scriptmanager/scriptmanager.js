@@ -34,7 +34,7 @@ class ScriptManager {
                 },
                 {
                     opcode: 'evaluateStatement',
-                    blockType: Scratch.BlockType.REPORTER,
+                    blockType: Scratch.BlockType.COMMAND,
                     text: "Evaluate statement",
                     branchCount: 1,
                 },
