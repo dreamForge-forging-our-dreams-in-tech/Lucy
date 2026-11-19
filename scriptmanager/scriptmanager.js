@@ -75,17 +75,17 @@ class ScriptManager {
     }
 
     evaluateStatement(args, util) {
+        const code = args.RAW_CODE;
 
-        console.log(!args)
-        if (!args) {
-            util.startBranch('1');
-        } else {
-            try {
-                const fn = new Function('a', `${args.RAW_CODE || args}`);
-                return fn(); // keep return statement because reporter reuses the same function
-            } catch (e) {
-                return `Error: ${e.message}`;
-            }
+        if (!code) {
+            util.startBranch(1);
+            return;
+        }
+
+        try {
+            return new Function(code)();
+        } catch (e) {
+            return `Error: ${e.message}`;
         }
     }
 }
