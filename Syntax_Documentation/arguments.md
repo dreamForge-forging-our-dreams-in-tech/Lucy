@@ -24,3 +24,9 @@ A good way of using this is by using variables, e.g. "let arguments = args.TYPE 
 
 Documentation has to mention support for this.
 
+## checking between branches and arguments
+
+Sometimes your block can execute branches, branches in scratch are called using the util.startBranch function but in JavaScript any executable statements are provided to the function via the arguments, to check this you can simply use a if statement and check if the args object is empty or not.
+
+e.g. 
+

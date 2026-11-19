@@ -19,18 +19,6 @@ class ScriptManager {
             name: 'scriptmanager',
             color1: '#0088ff', // Main block color
             color2: '#0066cc', // Hover/Outline color
-            menus:
-            {
-                event_objects
-                    : {
-                    acceptReporters:
-                        false
-                    , items: [
-                        { text: Scratch.Cast.toString(`Stage`), value: Scratch.Cast.toString(`stage`) },
-                        { text: Scratch.Cast.toString(`Sprite`), value: Scratch.Cast.toString(`sprite`) },
-                    ]
-                }
-            },
             blocks: [
                 {
                     opcode: 'evaluateExpression',
@@ -43,6 +31,12 @@ class ScriptManager {
                         },
 
                     }
+                },
+                {
+                    opcode: 'evaluateStatement',
+                    blockType: Scratch.BlockType.REPORTER,
+                    text: "Evaluate statement",
+                    branchCount: 1,
                 },
                 {
                     opcode: 'evaluateResult',
@@ -62,15 +56,34 @@ class ScriptManager {
 
     // The function name MUST match the opcode above exactly
     evaluateResult(args) {
-        return this.evalCode(args); // reuse evalCode to avoid code duplication, only reason for extra function is due to how turbowarp handles identification of blocks.
+        return this.evaluateExpression(args); // reuse evalCode to avoid code duplication, only reason for extra function is due to how turbowarp handles identification of blocks.
     }
 
     evaluateExpression(args) {
         try {
-            const fn = new Function('a', `return ${args.RAW_CODE || args}`);
+            const fn = new Function('a', `return ${args}`);
             return fn(); // keep return statement because reporter reuses the same function
         } catch (e) {
-            return `Error: ${e.message}`;
+
+            try { // return a plain string only when used inside of evaluateStatement.
+                return args.RAW_CODE || args;
+            } catch (e) {
+                return `Error: ${e.message}`;
+            }
+        }
+    }
+
+    evaluateStatement(args, util) {
+
+        if (args) {
+            try {
+                const fn = new Function('a', `${args.RAW_CODE || args}`);
+                return fn(); // keep return statement because reporter reuses the same function
+            } catch (e) {
+                return `Error: ${e.message}`;
+            }
+        } else {
+            util.startBranch('1');
         }
     }
 }
