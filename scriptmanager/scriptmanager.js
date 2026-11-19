@@ -76,6 +76,7 @@ class ScriptManager {
 
     evaluateStatement(args, util) {
 
+        console.log(!args)
         if (!args) {
             util.startBranch('1');
         } else {
