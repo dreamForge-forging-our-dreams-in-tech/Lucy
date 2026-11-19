@@ -76,15 +76,15 @@ class ScriptManager {
 
     evaluateStatement(args, util) {
 
-        if (args) {
+        if (!args) {
+            util.startBranch('1');
+        } else {
             try {
                 const fn = new Function('a', `${args.RAW_CODE || args}`);
                 return fn(); // keep return statement because reporter reuses the same function
             } catch (e) {
                 return `Error: ${e.message}`;
             }
-        } else {
-            util.startBranch('1');
         }
     }
 }

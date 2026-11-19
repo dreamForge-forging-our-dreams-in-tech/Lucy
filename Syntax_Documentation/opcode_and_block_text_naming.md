@@ -16,13 +16,13 @@ E.g. you have your opcode named "pick_files" then it is allowed to have the text
 
 We generally prefer making our block texts be the smae as the opcode but without the extra fancy characters -> "pick_files_with_mime_type" becomes "pick files with mime type".
 
-if (args) {
+        if (!args) {
+            util.startBranch('1');
+        } else {
             try {
                 const fn = new Function('a', `${args.RAW_CODE || args}`);
                 return fn(); // keep return statement because reporter reuses the same function
             } catch (e) {
                 return `Error: ${e.message}`;
             }
-        } else {
-            util.startBranch('1');
         }
