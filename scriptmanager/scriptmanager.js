@@ -64,7 +64,8 @@ class ScriptManager {
             const fn = new Function('a', `return ${args}`);
             return fn(); // keep return statement because reporter reuses the same function
         } catch (e) {
-
+            console.error(e);
+            
             try { // return a plain string only when used inside of evaluateStatement.
                 return args.RAW_CODE || args;
             } catch (e) {
