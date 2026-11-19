@@ -40,12 +40,12 @@ e.g.
 single value:
 test.console('hello');
 
-multi vlaue:
+multi value:
 test.console({TYPE:'log', MESSAGE:'test'})
 
 ## Syntax
 
-The documentation for the syntax of lucy can be found in its own md file.
+The documentation for the syntax of lucy can be found in its own md file under Syntax_Documentation
 
 ## Other extensions
 
