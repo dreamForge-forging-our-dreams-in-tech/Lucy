@@ -1,5 +1,5 @@
 {
-    "dreamForgeJSTools_evalCode": {
+    "dreamForgeJSTools_evaluateExpression": {
         "singleLine": true,
         "code": [
             "try {",
@@ -11,7 +11,7 @@
             "}"
         ]
     },
-    "dreamForgeJSTools_evalCode_Reporter": {
+    "dreamForgeJSTools_evaluateResult": {
         "singleLine": true,
         "code": [
             "() => {",
