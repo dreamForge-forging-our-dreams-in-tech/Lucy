@@ -75,12 +75,12 @@ class ScriptManager {
     }
 
     evaluateStatement(args, util) {
-        const code = args.RAW_CODE || args;
-
-        if (!code) {
+        if (!args || (typeof args === 'object' && Object.keys(args).length === 0)) {
             util.startBranch(1);
             return;
         }
+
+        const code = args.RAW_CODE || args;
 
         try {
             return new Function(code)();
